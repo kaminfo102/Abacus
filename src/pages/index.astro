@@ -1,0 +1,11 @@
+---
+import '@/styles/globals.css'
+import Layout from '../layouts/Layout.astro';
+import { CreateTest } from '@/components/admin/CreateTest';
+---
+
+<Layout title="سیستم آزمون محاسباتی">
+  <main class="container mx-auto py-8 px-4">
+    <CreateTest client:load />
+  </main>
+</Layout>

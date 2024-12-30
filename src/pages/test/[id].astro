@@ -1,0 +1,15 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { TakeTest } from '@/components/test/TakeTest';
+import { getTest } from '@/lib/api';
+
+const { id } = Astro.params;
+const test = await getTest(Number(id));
+---
+
+<Layout title={`آزمون ${test.name}`}>
+  <main class="container mx-auto py-8 px-4">
+    <h1 class="text-2xl font-bold text-center mb-8">{test.name}</h1>
+    <TakeTest test={test} client:load />
+  </main>
+</Layout>

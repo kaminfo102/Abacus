@@ -1,0 +1,51 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { StatCards } from '@/components/dashboard/StatCards';
+import { TestResultsChart } from '@/components/dashboard/TestResultsChart';
+import { TestResultsTable } from '@/components/dashboard/TestResultsTable';
+
+const stats = {
+  totalTests: 24,
+  averageScore: 85,
+  bestScore: 95,
+  currentStreak: 7,
+};
+
+const chartData = [
+  { date: '1402/01/01', score: 8, total: 10 },
+  { date: '1402/01/02', score: 7, total: 10 },
+  { date: '1402/01/03', score: 9, total: 10 },
+  { date: '1402/01/04', score: 10, total: 10 },
+];
+
+const results = [
+  {
+    id: 1,
+    test_name: 'آزمون جمع و تفریق',
+    score: 8,
+    total_questions: 10,
+    completed_at: '2024-01-01T10:00:00',
+    type: 'Mental',
+    level: 'Basic',
+  },
+  // Add more results...
+];
+---
+
+<Layout title="داشبورد">
+  <main class="container mx-auto py-8 px-4">
+    <h1 class="text-3xl font-bold mb-8">داشبورد</h1>
+    
+    <div class="space-y-8">
+      <StatCards stats={stats} client:load />
+      
+      <div class="grid gap-8 md:grid-cols-2">
+        <TestResultsChart data={chartData} client:load />
+        <div class="space-y-4">
+          <h2 class="text-2xl font-bold">نتایج اخیر</h2>
+          <TestResultsTable results={results} client:load />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

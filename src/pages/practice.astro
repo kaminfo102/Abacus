@@ -1,0 +1,12 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { PracticeMode } from '@/components/practice/PracticeMode';
+
+---
+
+<Layout title="تمرین">
+  <main class="container mx-auto py-8 px-4">
+    <h1 class="text-3xl font-bold mb-8">حالت تمرین</h1>
+    <PracticeMode client:load />
+  </main>
+</Layout>
